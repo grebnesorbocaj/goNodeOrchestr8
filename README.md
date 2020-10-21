@@ -2,8 +2,7 @@
 
 ## To run this:
 
- - Clone https://github.com/grebnesorbocaj/goDocker and run `make build`
- - Clone https://github.com/grebnesorbocaj/nodeDocker and run `npm run docker:build`
+ - Make sure that your docker pulls from dockerhub...idk how to ensure that.
  - Clone this repo and run `make init` to start the app, run `make end` to teardown the app
 
 ## Send a GET Request
