@@ -1,7 +1,7 @@
 version: "3"
 services:
   go:
-    image: diakou/go-docker:1.0
+    image: diakou/go-docker:1.2
     links:
       - "node:nodedocker"
     ports:
