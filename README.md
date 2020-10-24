@@ -3,7 +3,7 @@
 ## To run this:
 
  - Make sure that your docker pulls from dockerhub...idk how to ensure that.
- - Clone this repo and run `make init` to start the app, run `make end` to teardown the app
+ - Clone this repo and run ~~`make init`~~ `make up` to start the app, run ~~`make end`~~ `make down` to teardown the app
 
 ## Send a GET Request
  - Send a request to http://localhost:6060/monkeys
