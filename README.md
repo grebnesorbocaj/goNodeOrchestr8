@@ -29,3 +29,14 @@
      - Deployment.yaml for both apps (I can deploy both but network/not working)
      - Service.yaml (I think this actually works but need to verify with above)
      - Can I contact the app outside of kubectl proxy?
+
+
+### Links
+
+#### Go App
+ - GitHub: https://github.com/grebnesorbocaj/goDocker
+ - DockerHub: https://hub.docker.com/r/diakou/go-docker
+ 
+#### Node App
+ - Github: https://github.com/grebnesorbocaj/nodeDocker
+ - DockerHub: https://hub.docker.com/r/diakou/node-docker
