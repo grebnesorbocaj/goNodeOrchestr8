@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: goapp
+  template:
+    metadata:
+      labels:
+        name: goapp
+    spec:
+      containers:
+      - name: nodedocker
+        image: diakou/node-docker:1.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+      - name: goapp
+        image: diakou/go-docker:1.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
