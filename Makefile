@@ -25,3 +25,6 @@ install:
 uninstall:
 	echo "Kube tearing down via helm"
 	helm uninstall gonodekube
+
+reveal:
+	kubectl port-forward svc/go-node-kube 6060:80
