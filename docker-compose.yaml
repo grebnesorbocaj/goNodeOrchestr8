@@ -1,11 +1,13 @@
 version: "3"
 services:
   go:
-    image: diakou/go-docker:1.2
+    image: diakou/go-docker:1.3
     links:
       - "node:nodedocker"
     ports:
       - 6060:8080
+    environment:
+      HOST: nodedocker
   node:
     image: diakou/node-docker:1.1
     ports:

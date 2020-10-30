@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-node-kube
+spec:
+  ports:
+  - name: goapp
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    name: goapp
+  type: LoadBalancer
