@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goapp
+  name: "{{ .Release.Name }}"
 spec:
-  replicas: 5
+  replicas: {{ .Values.Deployment.Replicas }}
   selector:
     matchLabels:
       name: goapp
@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
       - name: nodedocker
-        image: diakou/node-docker:1.1
+        image: "diakou/node-docker:{{ .Values.NodeServer.Image.TagVersion }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 3000
+        - containerPort: {{ .Values.NodeServer.Port }}
       - name: goapp
-        image: diakou/go-docker:1.2
+        image: "diakou/go-docker:{{ .Values.GoServer.Image.TagVersion }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.GoServer.Port }}
         env:
         - name: GET_HOSTS_FROM
           value: dns

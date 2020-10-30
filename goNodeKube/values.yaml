@@ -1,0 +1,10 @@
+Deployment:
+  Replicas: 3
+NodeServer:
+  Image:
+    TagVersion: 1.1
+  Port: 3000
+GoServer:
+  Image:
+    TagVersion: 1.2kube
+  Port: 8080

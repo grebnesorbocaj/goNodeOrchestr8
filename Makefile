@@ -17,3 +17,11 @@ up:
 down:
 	echo "Docker Compose Down -- tearing down infra."
 	docker-compose down
+
+install:
+	echo "Kube starting via helm chart"
+	helm install gonodekube ./goNodeKube
+
+uninstall:
+	echo "Kube tearing down via helm"
+	helm uninstall gonodekube
