@@ -4,6 +4,10 @@
 
  - Make sure that your docker pulls from dockerhub...idk how to ensure that.
  - Clone this repo and run ~~`make init`~~ `make up` to start the app, run ~~`make end`~~ `make down` to teardown the app
+ - If you have kubernetes, kind, and helm installed:
+   - `make install` to startup pods and service
+   - `make reveal` to expose the service (and app) at `localhost:6060`
+   - `make uninstall` to teardown pod and service
 
 ## Send a GET Request
  - Send a request to http://localhost:6060/monkeys
@@ -22,13 +26,15 @@
  - Added docker-compose which can be implemented with `make up` and torn down with `make down`
  - Working on running this in kubernetes
    - Done:
-     - Deployment.yaml for JUST the node app
-     - Service.yaml for JUST the node app
-     - Contact the app via kubectl proxy
-   - Todo:
-     - Deployment.yaml for both apps (I can deploy both but network/not working)
-     - Service.yaml (I think this actually works but need to verify with above)
+     - Deployment.yaml for ~~JUST~~ the node app and go app
+     - Service.yaml for ~~JUST~~ the node app and go app
+     - ~~Contact the app via kubectl proxy~~
      - Can I contact the app outside of kubectl proxy?
+       - `kubectl port-forward svc/go-node-kube 6060:80`
+       - This will forward the service to be exposed at `localhost:6060`
+     - Modified GoApp so that it checks the HOST env variable to determine target URL.
+       - `localhost` in Kubernetes
+       - `nodedocker` in Docker-Compose
 
 
 ### Links
