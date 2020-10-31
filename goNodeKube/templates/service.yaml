@@ -6,7 +6,7 @@ spec:
   ports:
   - name: goapp
     port: 80
-    targetPort: 8080
+    targetPort: {{ .Values.GoServer.Port }}
     protocol: TCP
   selector:
     name: goapp
