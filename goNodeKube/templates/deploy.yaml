@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ .Release.Name }}"
+  name: "{{ .Release.Name }}-goapp"
 spec:
   replicas: {{ .Values.Deployment.Replicas }}
   selector:
@@ -13,11 +13,6 @@ spec:
         name: goapp
     spec:
       containers:
-      - name: nodedocker
-        image: "diakou/node-docker:{{ .Values.NodeServer.Image.TagVersion }}"
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: {{ .Values.NodeServer.Port }}
       - name: goapp
         image: "diakou/go-docker:{{ .Values.GoServer.Image.TagVersion }}"
         imagePullPolicy: IfNotPresent
@@ -27,4 +22,25 @@ spec:
         - name: GET_HOSTS_FROM
           value: dns
         - name: HOST
-          value: "localhost"
+          value: "nodepod"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-nodeapp"
+spec:
+  replicas: {{ .Values.Deployment.Replicas }}
+  selector:
+    matchLabels:
+      name: nodeapp
+  template:
+    metadata:
+      labels:
+        name: nodeapp
+    spec:
+      containers:
+      - name: nodedocker
+        image: "diakou/node-docker:{{ .Values.NodeServer.Image.TagVersion }}"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: {{ .Values.NodeServer.Port }}
