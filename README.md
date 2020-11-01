@@ -33,7 +33,8 @@
        - `kubectl port-forward svc/go-node-kube 6060:80`
        - This will forward the service to be exposed at `localhost:6060`
      - Modified GoApp so that it checks the HOST env variable to determine target URL.
-       - `localhost` in Kubernetes
+       - ~~`localhost`~~ `nodeapp` in Kubernetes
+         - Moved Golang container and NodeJS container into separate pods with corresponding services
        - `nodedocker` in Docker-Compose
 
 
